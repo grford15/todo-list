@@ -38,10 +38,13 @@ class App extends React.Component {
 					<button id="task-btn" onClick={this.submitTask}>Add</button>
 				</div>
 				<div className="task-list">
-					<ul>
+					<ul className="task-view">
 					{tasks.length > 0 ? 
 						tasks.map((task, key) => (
-							<li key={key}>{task}</li>
+							<li key={key}>
+								<input type="checkbox" name={task} />
+								{task}
+								</li>
 						))
 						: null
 					} 

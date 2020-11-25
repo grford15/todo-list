@@ -34,3 +34,19 @@
   padding: 4px 10px;
   margin: 0 5px;
 }
+
+.task-view {
+  color: #14213D;
+  padding-inline-start: 0px;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.2em;
+}
+
+.task-view input {
+  margin-right: 10px;
+}
+
+.task-view li {
+  list-style: none;
+  font-weight: 500;
+}
