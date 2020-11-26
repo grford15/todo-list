@@ -9,11 +9,16 @@ class App extends React.Component {
 				{
 					"task": "walk dog",
 					"completed": false
+				},
+				{
+					"task": "drink water",
+					"completed": false
 				}
 			],
 			completedTasks: []
 		}
 		this.submitTask = this.submitTask.bind(this);
+		this.completeTask = this.completeTask.bind(this);
 	}
 
 	submitTask(e){
@@ -31,6 +36,16 @@ class App extends React.Component {
 		
 	};
 
+	completeTask(e) {
+		const currentTask = this.state.activeTasks.find(task => task.task === e.target.name);
+
+		const index = this.state.activeTasks.findIndex(e => {
+			return e.task === currentTask.task;
+		})
+
+		console.log(index);
+	}
+
 	render() {
 		const {activeTasks, completedTasks} = this.state;
 		return (
@@ -47,7 +62,7 @@ class App extends React.Component {
 					{activeTasks.length > 0 ? 
 						activeTasks.map((task, key) => (
 							<li key={key}>
-								<input type="checkbox" name={task.task} />
+								<input type="checkbox" name={task.task} onChange={this.completeTask}/>
 								{task.task}
 								</li>
 						))
