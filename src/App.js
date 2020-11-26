@@ -1,33 +1,38 @@
 import React from "react";
-import store from 'store';
 import "./App.css";
 
 class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state={
-			tasks: [
-				"walk dog",
-				"do some coding"
-			]
+			activeTasks: [
+				{
+					"task": "walk dog",
+					"completed": false
+				}
+			],
+			completedTasks: []
 		}
 		this.submitTask = this.submitTask.bind(this);
 	}
 
 	submitTask(e){
-		const task = document.getElementById("task-input").value;
+		const task = {
+			"task": document.getElementById("task-input").value,
+			"completed": false
+		}
 		this.setState(state => {
-			const tasks = state.tasks.concat(task);
+			const activeTasks = state.activeTasks.concat(task);
 
 			return {
-				tasks
+				activeTasks
 			};
 		});
 		
 	};
 
 	render() {
-		const {tasks} = this.state;
+		const {activeTasks, completedTasks} = this.state;
 		return (
 			<div className="app-container">
 				<div className="title-section">
@@ -39,11 +44,11 @@ class App extends React.Component {
 				</div>
 				<div className="task-list">
 					<ul className="task-view">
-					{tasks.length > 0 ? 
-						tasks.map((task, key) => (
+					{activeTasks.length > 0 ? 
+						activeTasks.map((task, key) => (
 							<li key={key}>
-								<input type="checkbox" name={task} />
-								{task}
+								<input type="checkbox" name={task.task} />
+								{task.task}
 								</li>
 						))
 						: null
