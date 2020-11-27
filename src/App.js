@@ -39,15 +39,17 @@ class App extends React.Component {
 	completeTask(e) {
 		const currentTask = this.state.activeTasks.find(task => task.task === e.target.name);
 
-		const index = this.state.activeTasks.findIndex(e => {
-			return e.task === currentTask.task;
-		})
-
-		console.log(index);
+		const updatedTasks = this.state.activeTasks.map(item => {
+			if(item.task === currentTask.task) {
+				return {...item, completed: !item.completed};
+			}
+			return item;
+		});
+		this.setState({activeTasks: updatedTasks});
 	}
 
 	render() {
-		const {activeTasks, completedTasks} = this.state;
+		const {activeTasks} = this.state;
 		return (
 			<div className="app-container">
 				<div className="title-section">
