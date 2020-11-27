@@ -22,6 +22,8 @@ class App extends React.Component {
 		this.saveToLocal = this.saveToLocal.bind(this);
 	}
 
+
+
 	submitTask(e){
 		const task = {
 			"task": document.getElementById("task-input").value,
@@ -58,6 +60,11 @@ class App extends React.Component {
 			<div className="app-container">
 				<div className="title-section">
 					<h2>#toDoList</h2>
+				</div>
+				<div className="task-buttons">
+					<button className="header-btns">All</button>
+					<button className="header-btns">Active</button>
+					<button className="header-btns">Completed</button>
 				</div>
 				<div className="task-section">
 					<input type="text" placeholder="Enter a Task" id="task-input" />

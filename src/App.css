@@ -50,3 +50,24 @@
   list-style: none;
   font-weight: 500;
 }
+
+.task-buttons {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  border-bottom: 1px solid #14213d71;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.header-btns {
+  color: #14213D;
+  border: none;
+  background-color: transparent;
+  font-family: 'Raleway';
+  font-size: 1.1em;
+}
+
+.header-btns:hover {
+  color: #457B9D;
+}
