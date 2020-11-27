@@ -19,6 +19,7 @@ class App extends React.Component {
 		}
 		this.submitTask = this.submitTask.bind(this);
 		this.completeTask = this.completeTask.bind(this);
+		this.saveToLocal = this.saveToLocal.bind(this);
 	}
 
 	submitTask(e){
@@ -26,15 +27,18 @@ class App extends React.Component {
 			"task": document.getElementById("task-input").value,
 			"completed": false
 		}
-		this.setState(state => {
-			const activeTasks = state.activeTasks.concat(task);
-
-			return {
-				activeTasks
-			};
-		});
+		this.setState({
+			activeTasks: this.state.activeTasks.concat(task)
+		},
+		this.saveToLocal
+		);
 		
 	};
+
+	saveToLocal() {
+		const localData = this.state.activeTasks;
+		localStorage.setItem('activeTasks', JSON.stringify(localData));
+	}
 
 	completeTask(e) {
 		const currentTask = this.state.activeTasks.find(task => task.task === e.target.name);
